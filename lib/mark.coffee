@@ -7,7 +7,7 @@ module.exports =
     constructor: (editorView) ->
       @editorView = editorView
 
-      @editorView.command 'emacs:set-mark', => @toggleMark()
+      @editorView.command 'emacs:set-mark', => @setMark()
       @editorView.command 'emacs:clear-mark', => @clearMark()
 
       @editorView.on 'cursor:moved', => @extendSelection()
@@ -15,9 +15,6 @@ module.exports =
       @editorView.getEditor().getBuffer().on 'changed', => @clearMark()
 
       @marking = false
-
-    toggleMark: ->
-      if @marking then @clearMark() else @setMark()
 
     setMark: ->
       @editorView.addClass(MARKING)
