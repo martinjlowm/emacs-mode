@@ -36,6 +36,15 @@ killRingSave = (editorView) ->
   killRing.put text
   editorView.trigger 'emacs:clear-mark'
 
+killLine = (editorView) ->
+  saveClipboard()
+
+  editor = editorView.getEditor()
+  editor.cutToEndOfLine()
+  text = atom.clipboard.read()
+
+  killRing.put text
+
 killRegion = (editorView) ->
   saveClipboard()
 
@@ -56,6 +65,7 @@ excludeCursor = (editorView, callback) ->
 atom.workspaceView.eachEditorView (editorView) =>
   editorView.command 'emacs:yank', -> yank(editorView)
   editorView.command 'emacs:yank-pop', -> yankPop(editorView)
+  editorView.command 'emacs:kill-line', -> killLine(editorView)
   editorView.command 'emacs:kill-region', -> killRegion(editorView)
   editorView.command 'emacs:kill-ring-save', ->
     killRingSave(editorView)

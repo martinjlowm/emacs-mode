@@ -1,5 +1,3 @@
-_ = require 'underscore-plus'
-
 module.exports =
   class KillRing
     constructor: ->

@@ -64,6 +64,7 @@ atom.packages.enablePackage('emacs-mode').activateNow()
   'alt-<': 'core:move-to-top'
 
   # text manipulation
+  'ctrl-k': 'emacs:kill-line'
   'ctrl-w': 'emacs:kill-region'
   'ctrl-y': 'emacs:yank'
   'alt-y': 'emacs:yank-pop'
